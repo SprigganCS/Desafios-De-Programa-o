@@ -3,19 +3,21 @@ def achaHorizontal(grid, palavras, lin):
         for j in range(lin):
             aux = ' '.join(grid[j])
             index = aux.find(palavras[i])
+            #print(aux, palavras[i])
             if index != -1:
                 print(palavras[i], j, index)
 
-            reverse = aux[::-1]
+            reverse = palavras[i][::-1]
             index = aux.find(reverse)
             if index != -1:
-                print(reverse, j, index)
+                print(reverse, j, index + len(palavras[i]) - 1)
 
 def main():
     cases = int(input()) #numero de casos
     grid=[]
     palavras=[]
     for i in range(cases):
+        blankline = input()
         grid=[]
         palavras=[]
         dim = input()
