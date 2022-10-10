@@ -10,7 +10,7 @@ def achaHorizontal(grid, palavras, lin):
             reverse = palavras[i][::-1]
             index = aux.find(reverse)
             if index != -1:
-                print(reverse, j, index + len(palavras[i]) - 1) #printa a palavra, linha e coluna, reversa
+                print(reverse, j+1, index + len(palavras[i]) - 1+1) #printa a palavra, linha e coluna, reversa #precisa somar 1 pq começa em 1
 
 
 def achaVertical(grid, palavras, col, lin):
