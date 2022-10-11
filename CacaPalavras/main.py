@@ -96,7 +96,7 @@ def main():
 
         while(1): #o criterio de parada é quando a linha tiver tamanho 1 (o fim da matriz é seguido do numero de palavras), então break
             aux = input().upper()
-            if len(aux) == 1: # a comparacão deve ver se aux é um numero ou nao
+            if aux.isnumeric() == True: # a comparacão deve ver se aux é um numero ou nao
                 break
             else:
                 grid.append([aux]) #salva a linha na lista
@@ -133,7 +133,7 @@ def main():
             #print(auxi[1], auxi[2])
             print(auxi[1], auxi[2])
 
-
+        print("\n")
         try:
             blankline = input()
         except EOFError:
