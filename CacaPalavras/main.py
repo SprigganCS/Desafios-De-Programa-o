@@ -18,27 +18,36 @@ def achaHorizontal(grid, palavras, lin): #precisa fazer a lógica de inserir só
                 result[i].append(index + len(palavras[i]) - 1+1)
                 #print(reverse, j+1, index + len(palavras[i]) - 1+1) #printa a palavra, linha e coluna, reversa #precisa somar 1 pq começa em 1
     
-    print(result)
+    #print(result)
+    return result
     print("fim horizontal")
 
 
 def achaVertical(grid, palavras, col, lin):
     result=[]
     for i in range(len(palavras)):
+        result.append([palavras[i]])
         for j in range(col):
             aux = ''
             for k in range(lin):
                 aux += grid[k][0][j] #transforma a coluna da lista em string
             #print(aux) #printa a coluna em formato de linha
-            index = aux.find(palavras[i])
-            if index != -1:
-                print(palavras[i], index+1, j+1) #printa a palavra, linha e coluna, normal #precisa somar 1 pq começa em 1
+            if len(result[i]) != 3: 
+                index = aux.find(palavras[i])
+                if index != -1:
+                    #print(palavras[i], index+1, j+1) #printa a palavra, linha e coluna, normal #precisa somar 1 pq começa em 1
+                    result[i].append(index+1)
+                    result[i].append(j+1)
             
-            reverse = palavras[i][::-1]
-            index = aux.find(reverse)
-            if index != -1:
-                print(reverse, index + len(palavras[i])-1 +1, j+1) #printa a palavra, linha e coluna, reversa #precisa somar 1 pq começa em 1
-            
+                reverse = palavras[i][::-1]
+                index = aux.find(reverse)
+                if index != -1:
+                    #print(reverse, index + len(palavras[i])-1 +1, j+1) #printa a palavra, linha e coluna, reversa #precisa somar 1 pq começa em 1
+                    result[i].append(index + len(palavras[i]) - 1+1)
+                    result[i].append(j+1)
+
+    return result
+    #print(result)   
     print("fim vertical")
 
 def achaDiagonal(grid, palavras, col, lin):
@@ -59,7 +68,6 @@ def achaDiagonal(grid, palavras, col, lin):
                     if index != -1:
                         result[i].append(k+2)
                         result[i].append(j+2)
-                        print(result)
                         break
                     
                     reverse = palavras[i][::-1]
@@ -67,7 +75,9 @@ def achaDiagonal(grid, palavras, col, lin):
                     if index != -1:
                         print(reverse, j+2, k+2)
                         break
-    print("fim diagonal principal")
+    return result
+    #print(result)
+    
             
                 
 
@@ -86,18 +96,42 @@ def main():
 
         while(1): #o criterio de parada é quando a linha tiver tamanho 1 (o fim da matriz é seguido do numero de palavras), então break
             aux = input().upper()
-            if len(aux) == 1:
+            if len(aux) == 1: # a comparacão deve ver se aux é um numero ou nao
                 break
             else:
                 grid.append([aux]) #salva a linha na lista
 
-        for i in range(int(aux)): #aux é a quantidade de palavras a serem buscadas
+        for j in range(int(aux)): #aux é a quantidade de palavras a serem buscadas
             palAux = input().upper()
             palavras.append(palAux)
+
+
+        #chamada de funcoes do caça palavras
+
+        horiz = achaHorizontal(grid, palavras, lin)
+        vert = achaVertical(grid, palavras, col, lin)
+        diagprin = achaDiagonal(grid, palavras, col, lin)
+        #print(horiz, "\n", vert, "\n", diagprin)
+
+
+        #decisao de qual coordenada printar
+
         
-        achaHorizontal(grid, palavras, lin)
-        achaVertical(grid, palavras, col, lin)
-        achaDiagonal(grid, palavras, col, lin)
+        for i in range(len(palavras)):
+            auxi=[float("inf"), float("inf"), float("inf")] #infinito
+            if len(horiz[i]) == 3:
+                auxi = horiz[i]
+            elif len(vert[i]) == 3:
+                if auxi[1] > vert[i][1]:
+                    auxi = vert[i]
+            elif len(diagprin[i]) == 3:
+                if auxi[1] > diagprin[i][1]:
+                    auxi = diagprin[i]
+            else:
+                print(1)
+                #aqui vai o caso de nao achar a palavra
+            #print(auxi[1], auxi[2])
+            print(auxi[1], auxi[2])
 
 
         try:
