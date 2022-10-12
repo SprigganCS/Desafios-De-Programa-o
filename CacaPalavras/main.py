@@ -95,9 +95,14 @@ def achaDiagonalSec(grid, palavras, col, lin):
                 if len(result[i]) != 3: #elimina resultados duplicados, selecionando apenas o primeiro
                     index = aux.find(palavras[i])
                     if index != -1:
-                        result[i].append(lin-k+2)
-                        result[i].append(col-(j+2))
-                        break
+                        if k == 0 and j==0:
+                            result[i].append(1)
+                            result[i].append(col-j)
+                            break
+                        else:
+                            result[i].append(lin-k+2)
+                            result[i].append(col-(j+2))
+                            break
                     
                     reverse = palavras[i][::-1]
                     index = aux.find(reverse)
