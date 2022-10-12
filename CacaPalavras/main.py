@@ -78,8 +78,13 @@ def achaDiagonal(grid, palavras, col, lin):
     return result
     #print(result)
     
-            
-                
+
+def flip(im, w):
+	result = []
+	for i in im:
+		result.append([i[0][w-1::-1]])
+	return result
+
 
 def main():
     cases = int(input()) #numero de casos
@@ -111,8 +116,8 @@ def main():
         horiz = achaHorizontal(grid, palavras, lin)
         vert = achaVertical(grid, palavras, col, lin)
         diagprin = achaDiagonal(grid, palavras, col, lin)
+        diagsec = achaDiagonal(flip(grid, col), palavras, col, lin)
         #print(horiz, "\n", vert, "\n", diagprin)
-
 
         #decisao de qual coordenada printar
 
@@ -127,6 +132,9 @@ def main():
             elif len(diagprin[i]) == 3:
                 if auxi[1] > diagprin[i][1]:
                     auxi = diagprin[i]
+            elif len(diagsec[i]) == 3:
+                if auxi[1] > diagsec[i][1]:
+                    auxi = diagsec[i]
             else:
                 print(1)
                 #aqui vai o caso de nao achar a palavra
