@@ -78,6 +78,35 @@ def achaDiagonal(grid, palavras, col, lin):
                         break
     return result
     #print(result)
+
+def achaDiagonalSec(grid, palavras, col, lin):
+    result = []
+    for i in range(len(palavras)):
+        result.append([palavras[i]])
+        for j in range(lin):
+            for k in range(col):
+                aux = ''
+                for l in range(lin):
+                    for m in range(col):
+                        if j+l == k+m:
+                            aux += grid[l][0][m]
+                            break
+                #print(aux) #string de todas as diagonais
+                if len(result[i]) != 3: #elimina resultados duplicados, selecionando apenas o primeiro
+                    index = aux.find(palavras[i])
+                    if index != -1:
+                        result[i].append(lin-(k+2))
+                        result[i].append(col-(j+2))
+                        break
+                    
+                    reverse = palavras[i][::-1]
+                    index = aux.find(reverse)
+                    if index != -1:
+                        result[i].append((k+2))
+                        result[i].append((j+2))
+                        break
+    return result
+    #print(result)
     
 
 def flip(im, w):
@@ -117,7 +146,7 @@ def main():
         horiz = achaHorizontal(grid, palavras, lin)
         vert = achaVertical(grid, palavras, col, lin)
         diagprin = achaDiagonal(grid, palavras, col, lin)
-        diagsec = achaDiagonal(flip(grid, col), palavras, col, lin)
+        diagsec = achaDiagonalSec(flip(grid, col), palavras, col, lin)
 
         #print(horiz, "\n", vert, "\n", diagprin, "\n", diagsec)
         #print("")
