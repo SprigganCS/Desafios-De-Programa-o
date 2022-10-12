@@ -7,8 +7,8 @@ def achaHorizontal(grid, palavras, lin): #precisa fazer a lógica de inserir só
             index = aux.find(palavras[i])
             #print(aux, palavras[i])
             if index != -1:
-                result[i].append(j)
-                result[i].append(index)
+                result[i].append(j+1)
+                result[i].append(index+1)
                 #print(palavras[i], j, index) #printa a palavra, linha e coluna, normal
 
             reverse = palavras[i][::-1]
@@ -73,7 +73,7 @@ def achaDiagonal(grid, palavras, col, lin):
                     reverse = palavras[i][::-1]
                     index = aux.find(reverse)
                     if index != -1:
-                        print(reverse, j+2, k+2)
+                        #print(reverse, j+2, k+2)
                         break
     return result
     #print(result)
@@ -117,7 +117,8 @@ def main():
         vert = achaVertical(grid, palavras, col, lin)
         diagprin = achaDiagonal(grid, palavras, col, lin)
         diagsec = achaDiagonal(flip(grid, col), palavras, col, lin)
-        #print(horiz, "\n", vert, "\n", diagprin)
+        print(horiz, "\n", vert, "\n", diagprin, "\n", diagsec)
+        print("")
 
         #decisao de qual coordenada printar
 
