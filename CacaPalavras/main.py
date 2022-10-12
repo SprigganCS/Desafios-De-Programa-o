@@ -73,7 +73,8 @@ def achaDiagonal(grid, palavras, col, lin):
                     reverse = palavras[i][::-1]
                     index = aux.find(reverse)
                     if index != -1:
-                        #print(reverse, j+2, k+2)
+                        result[i].append(k+2)
+                        result[i].append(j+2)
                         break
     return result
     #print(result)
@@ -117,6 +118,7 @@ def main():
         vert = achaVertical(grid, palavras, col, lin)
         diagprin = achaDiagonal(grid, palavras, col, lin)
         diagsec = achaDiagonal(flip(grid, col), palavras, col, lin)
+
         #print(horiz, "\n", vert, "\n", diagprin, "\n", diagsec)
         print("")
 
@@ -138,8 +140,7 @@ def main():
                     auxi = diagsec[i]
             else:
                 print("lakaka")
-                #aqui vai o caso de nao achar a palavra
-            #print(auxi[1], auxi[2])
+        
             print(auxi[1], auxi[2])
 
         print("\n")
