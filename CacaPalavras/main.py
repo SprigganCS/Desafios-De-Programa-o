@@ -117,7 +117,7 @@ def main():
         vert = achaVertical(grid, palavras, col, lin)
         diagprin = achaDiagonal(grid, palavras, col, lin)
         diagsec = achaDiagonal(flip(grid, col), palavras, col, lin)
-        print(horiz, "\n", vert, "\n", diagprin, "\n", diagsec)
+        #print(horiz, "\n", vert, "\n", diagprin, "\n", diagsec)
         print("")
 
         #decisao de qual coordenada printar
@@ -125,19 +125,19 @@ def main():
         
         for i in range(len(palavras)):
             auxi=[float("inf"), float("inf"), float("inf")] #infinito
-            if len(horiz[i]) == 3:
+            if len(horiz[i]) >= 3:
                 auxi = horiz[i]
-            elif len(vert[i]) == 3:
+            elif len(vert[i]) >= 3:
                 if auxi[1] > vert[i][1]:
                     auxi = vert[i]
-            elif len(diagprin[i]) == 3:
+            elif len(diagprin[i]) >= 3:
                 if auxi[1] > diagprin[i][1]:
                     auxi = diagprin[i]
-            elif len(diagsec[i]) == 3:
+            elif len(diagsec[i]) >= 3:
                 if auxi[1] > diagsec[i][1]:
                     auxi = diagsec[i]
             else:
-                print(1)
+                print("lakaka")
                 #aqui vai o caso de nao achar a palavra
             #print(auxi[1], auxi[2])
             print(auxi[1], auxi[2])
