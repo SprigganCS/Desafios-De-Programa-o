@@ -120,7 +120,7 @@ def main():
         diagsec = achaDiagonal(flip(grid, col), palavras, col, lin)
 
         #print(horiz, "\n", vert, "\n", diagprin, "\n", diagsec)
-        print("")
+        #print("")
 
         #decisao de qual coordenada printar
 
