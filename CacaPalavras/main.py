@@ -95,15 +95,15 @@ def achaDiagonalSec(grid, palavras, col, lin):
                 if len(result[i]) != 3: #elimina resultados duplicados, selecionando apenas o primeiro
                     index = aux.find(palavras[i])
                     if index != -1:
-                        result[i].append(lin-(k+2))
+                        result[i].append(lin-k+2)
                         result[i].append(col-(j+2))
                         break
                     
                     reverse = palavras[i][::-1]
                     index = aux.find(reverse)
                     if index != -1:
-                        result[i].append((k+2))
-                        result[i].append((j+2))
+                        result[i].append(k+2)
+                        result[i].append(j+2)
                         break
     return result
     #print(result)
@@ -148,7 +148,7 @@ def main():
         diagprin = achaDiagonal(grid, palavras, col, lin)
         diagsec = achaDiagonalSec(flip(grid, col), palavras, col, lin)
 
-        #print(horiz, "\n", vert, "\n", diagprin, "\n", diagsec)
+        print(horiz, "\n", vert, "\n", diagprin, "\n", diagsec)
         #print("")
 
         #decisao de qual coordenada printar
