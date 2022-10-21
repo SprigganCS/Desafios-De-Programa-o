@@ -35,10 +35,11 @@ char *cria_alfabeto(char *chave, char *alfabeto_novo)
     chave[31] = ' ';
     chave[32] = ' ';
     chave[33] = ' ';
+    chave[41] = ' ';
 
     char chave_tratada[26];
     int j = 0;
-    for (int i = 0; i < 44; i++)
+    for (int i = 0; i < 43; i++)
     { // removendo espaços da chave e preenchendo chave_tratada
         if (chave[i] != ' ')
         {
@@ -53,6 +54,7 @@ char *cria_alfabeto(char *chave, char *alfabeto_novo)
     for (int i = 0; i < 26; i++)
     {
         alfabeto_novo[vet[i]] = chave_tratada[i];
+        // printf("%d ", vet[i]);
     }
     // printf("%s", alfabeto_novo); //ler somente até a posição 26
 
@@ -68,23 +70,21 @@ char traduz(char *tradutor, char *matriz_texto)
         char aux = matriz_texto[i];
         for (j = 0; j < 26; j++)
         {
-            if (aux == alfabeto[j])
+            if (aux == tradutor[j])
             {
                 break;
             }
         }
         if (j == 26)
         {
-            //printf(" ");
+            printf(" ");
         }
         else
         {
-
-            //printf("%c", tradutor[j]);
+            printf("%c", alfabeto[j]);
         }
     }
-    //printf("\n");
-    printf("%c", tradutor[15]);
+    printf("\n");
 }
 
 int main()
@@ -137,6 +137,11 @@ int main()
                 break;
             }
         }
+    }
+    if (strlen(chave) != 44)
+    {
+        printf("No solution");
+        return 0;
     }
 
     char aux[26];
