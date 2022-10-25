@@ -7,3 +7,5 @@ As atividades podem ser desenvolvidas utilizando as linguagens:
   <li>Python</li>
   <li>Java</li>
  </ul>
+
+Os problemas com input.txt ou in.txt devem ser executados com direcionamento, ex.: python3 main.py < input.txt, ou então, ./main < input.txt
