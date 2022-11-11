@@ -27,7 +27,7 @@ def is_smith(n1, n2):
 
 #is prime
 def is_prime(n):
-    if n < 2:
+    if n <= 2:
         return False
     for i in range(2, n):
         if n % i == 0:
@@ -40,7 +40,10 @@ for i in range(n_input):
         n = int(input())  
         regra = True
         while(regra):
-            n = n + 1
+            if(n == 1):
+                n+=2
+            else:
+                n = n + 1
             if(is_prime(n)):
                 n+=1    
 #            print(f"Anterior: {n} e decomposicao = {get_number(decompose(n))}")
